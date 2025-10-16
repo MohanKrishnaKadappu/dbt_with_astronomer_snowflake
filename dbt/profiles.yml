@@ -1,0 +1,15 @@
+dbt_project:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: account identifier eg ogerfd-er1231
+      user: username no quotes
+      password: givepassword
+      role: ACCOUNTADMIN
+      database: DBT_PRACTICE
+      warehouse: COMPUTE_WH
+      schema: RAW              
+      threads: 4
+      client_session_keep_alive: False
+      query_tag: "dbt_learn_repos_dev"

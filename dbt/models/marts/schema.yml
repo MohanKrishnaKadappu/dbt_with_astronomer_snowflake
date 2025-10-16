@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Aggregated orders with payment method details"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: total_amount
+        description: "Sum of all payments for the order"
+
+  - name: dim_customers
+    description: "Customer dimension with order and lifetime value"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique

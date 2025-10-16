@@ -1,0 +1,53 @@
+# ------------------------------------------------------------------------------
+# 📦 Project Metadata
+# ------------------------------------------------------------------------------
+name: 'dbt_project'
+version: '1.0.0'
+config-version: 2
+require-dbt-version: ">=1.8.0"
+
+# This must match your profiles.yml key
+profile: dbt_project
+
+# ------------------------------------------------------------------------------
+# 📂 File Path Definitions
+# ------------------------------------------------------------------------------
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# ------------------------------------------------------------------------------
+# 🧩 Models Configuration
+# ------------------------------------------------------------------------------
+models:
+  dbt_project:
+    staging:
+      +database: DBT_PRACTICE
+      +schema: STAGING
+      +materialized: view
+
+    marts:
+      +database: DBT_PRACTICE
+      +schema: MARTS
+      +materialized: table
+
+    intermediate:  # optional
+      +database: DBT_PRACTICE
+      +schema: INTERMEDIATE
+      +materialized: table
+
+# ------------------------------------------------------------------------------
+# 🌱 Seeds Configuration
+# ------------------------------------------------------------------------------
+seeds:
+  dbt_project:
+    +database: DBT_PRACTICE
+    +schema: RAW
+    +quote_columns: false
